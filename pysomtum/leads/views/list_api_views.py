@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 from ..models import Lead
 from ..serializers import BasicLeadSerializer, LeadSerializer
 
+
 class ListLeadAPIView(APIView):
     def get(self, request):
         leads = Lead.objects.all()
