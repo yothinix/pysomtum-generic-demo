@@ -1,0 +1,11 @@
+<h1>Applicant List</h1>
+<ul>
+  {% for lead in leads %}
+  <li>
+    <h3>Applicant ID {{ lead.id }}: {{ lead.first_name }} {{ lead.last_name }}</h3>
+    <p>Email: <a href='mailto:{{ lead.email }}'>{{ lead.email }}</a></p>
+    <p>Phone: {{ lead.phone }}</p>
+    <p>Message: {{ lead.message }}</p>
+  </li>
+  {% endfor %}
+</ul>

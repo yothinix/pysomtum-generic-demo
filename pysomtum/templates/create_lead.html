@@ -1,0 +1,12 @@
+<h1>Contact</h1>
+<h3>Let's connect</h3>
+
+<form action='/create' method='post'>
+  {% csrf_token %}
+  <p>First Name: <input type='text' id='first_name' name='first_name' placeholder='first_name' /></p>
+  <p>Last Name: <input type='text' id='last_name' name='last_name' placeholder='last_name' /></p>
+  <p>Email: <input type='email' id='email' name='email' placeholder='email' /></p>
+  <p>Phone: <input type='phone' id='phone' name='phone' placeholder='phone' /></p>
+  <p>Message: <textarea id='message' name='message' /></textarea></p>
+  <input type='submit' />
+</form>
