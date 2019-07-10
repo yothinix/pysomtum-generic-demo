@@ -1,6 +1,7 @@
 from rest_framework.generics import CreateAPIView, ListCreateAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.viewsets import ModelViewSet
 
 from ..models import Lead
 from ..serializers import LeadSerializer
@@ -45,5 +46,10 @@ class GenericCreateLeadAPIView(CreateAPIView):
 
 
 class GenericListCreateLeadAPIView(ListCreateAPIView):
+    queryset = Lead.objects.all()
+    serializer_class = LeadSerializer
+
+
+class LeadViewSet(ModelViewSet):
     queryset = Lead.objects.all()
     serializer_class = LeadSerializer

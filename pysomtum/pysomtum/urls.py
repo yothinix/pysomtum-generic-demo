@@ -1,5 +1,6 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 
 from leads.views.list_views import BasicListLeadView, GenericListLeadView, TemplateListLeadView
 from leads.views.create_views import TemplateCreateLeadView, GenericCreateLeadView
@@ -13,7 +14,11 @@ from leads.views.create_api_views import (
     CreateLeadWithSerializerAPIView,
     GenericCreateLeadAPIView,
     GenericListCreateLeadAPIView,
+    LeadViewSet
 )
+
+router = DefaultRouter()
+router.register(r'leads', LeadViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,4 +34,5 @@ urlpatterns = [
     path('api/create/v2/', CreateLeadWithSerializerAPIView.as_view(), name='serializer-create-api-view'),
     path('api/create/v3/', GenericCreateLeadAPIView.as_view(), name='generic-create-api-view'),
     path('api/v4/', GenericListCreateLeadAPIView.as_view(), name='list-create-lead-api-view'),
+    path('api/v5/', include(router.urls))
 ]
